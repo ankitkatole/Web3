@@ -3,10 +3,10 @@ import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 
-// const mnemonic = generateMnemonic();
+// const mnemonic = generateMnemonic(); //This function is used to generatee random mnemonic
 
 const mnemonic = 
-"destroy retire candy cotton asset field wheel gate auction borrow join predict";
+"destroy retire candy cotton asset field wheel gate auction borrow join predict"; // Demo Mnemonic
 const seed = mnemonicToSeedSync(mnemonic);
 console.log(seed)
 for (let i = 0; i < 4; i++) {//i iterating till no. of accounts we have this mnemonic is example mnemonic with 4 accounts
