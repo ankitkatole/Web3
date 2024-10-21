@@ -58,23 +58,23 @@ const Airdrop = () => {
     };
     getBalance();
     return (
-        <div className='flex flex-col space-y-2 md:space-y-0 md:flex-row justify-around mt-5 '>
-            <div className="stats bg-primary text-primary-content flex text-center">
+        <div className='flex flex-col justify-around mt-5 space-y-2 md:space-y-0 md:flex-row '>
+            <div className="flex text-center stats bg-primary text-primary-content">
                 <div className="stat">
-                    <div className="stat-title text-black"><h2 className='text-center mt-3 text-4xl font-bold '>Balance</h2></div>
-                    <div id="balance" className="stat-value text-2xl text-white">Connect to Wallet</div>
+                    <div className="text-black stat-title"><h2 className='mt-3 text-4xl font-bold text-center '>Balance</h2></div>
+                    <div id="balance" className="text-2xl text-white stat-value">Connect to Wallet</div>
                 </div>
             </div>
             <div>
-                <h3 className='text-center mt-3 text-4xl font-bold '>Airdrop Sols</h3>
-                <div className='flex justify-center flex-colspace-y-2 mt-4 md:space-x-2'>
+                <h3 className='mt-3 text-4xl font-bold text-center '>Airdrop Sols</h3>
+                <div className='flex justify-center mt-4 flex-colspace-y-2 md:space-x-2'>
                     <input
                         type='text'
                         id="amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         placeholder='Enter Amount To AirDrop'
-                        className="input input-bordered input-accent w-full max-w-xs"
+                        className="w-full max-w-xs input input-bordered input-accent"
                     />
                     <button
                         onClick={wallet.connected && wallet.publicKey ? sendAirdrop : () => alert("Wallet not Connected")}
@@ -84,10 +84,10 @@ const Airdrop = () => {
                     </button>
 
                     {alertVisible && (
-                        <div role="alert" className="alert alert-success mt-4">
+                        <div role="alert" className="mt-4 alert alert-success">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 shrink-0 stroke-current"
+                                className="w-6 h-6 stroke-current shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24">
                                 <path
@@ -97,15 +97,15 @@ const Airdrop = () => {
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                 />
                             </svg>
-                            <span>Your purchase has been confirmed!</span>
+                            <span>Your Airdrop has been sent successfully!</span>
                         </div>
                     )}
 
                     {errorVisible && (
-                        <div role="alert" className="alert alert-error mt-4">
+                        <div role="alert" className="mt-4 alert alert-error">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 shrink-0 stroke-current"
+                                className="w-6 h-6 stroke-current shrink-0"
                                 fill="none"
                                 viewBox="0 0 24 24">
                                 <path
