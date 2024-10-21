@@ -11,8 +11,11 @@ import { clusterApiUrl } from '@solana/web3.js';
 
 // Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
-import Airdrop from './Airdrop';
-import { ShowSolBalance } from './Balance';
+import Navbar from './Components/Navbar';
+import ConnectionButtons from './Components/ConnectionButtons';
+import Hero from './Components/Hero';
+import Airdrop from './Components/Airdrop';
+import Footer from './Components/Footer';
 
 const App = () => {
 
@@ -25,16 +28,20 @@ const App = () => {
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
   return (
+    <>
     <ConnectionProvider endpoint={RPC_URL}>
-      <WalletProvider wallets={[]} autoConnect>
+      <WalletProvider wallets={[]}>
         <WalletModalProvider>
-        <WalletMultiButton /><br/><br/>
-        <WalletDisconnectButton />
-          <Airdrop />
-          <ShowSolBalance />
-        </WalletModalProvider>
+    <Navbar />
+    <Hero />
+    <ConnectionButtons />
+    <Airdrop />
+    <Footer />
+    </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
+    </>
+    
   )
 }
 
