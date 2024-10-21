@@ -30,7 +30,6 @@ const App = () => {
             <Hero />
             <ConnectionButtons />
             <Airdrop />
-            <Footer />
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
