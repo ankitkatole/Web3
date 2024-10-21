@@ -9,8 +9,6 @@ import {
     WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
-
-// Default styles that can be overridden by your app
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 const Airdrop = () => {
@@ -24,12 +22,11 @@ const Airdrop = () => {
             document.getElementById("balance").innerHTML = `${balance / LAMPORTS_PER_SOL} SOL`;
         }
     }
-    // State to manage alert visibility
     const [alertVisible, setAlertVisible] = useState(false);
     const [errorVisible, setErrorVisible] = useState(false);
-    const [amount, setAmount] = useState(''); // State to manage input amount
+    const [amount, setAmount] = useState('');
 
-    // Check if the wallet is connected and publicKey is not null
+
     if (wallet.connected && wallet.publicKey) {
         console.log(wallet.publicKey);
     } else {
@@ -40,21 +37,21 @@ const Airdrop = () => {
         if (amount && wallet.publicKey) {
             try {
                 await connection.requestAirdrop(wallet.publicKey, amount * LAMPORTS_PER_SOL);
-                setAlertVisible(true); // Show the alert on success
-                setErrorVisible(false); // Ensure error alert is hidden
+                setAlertVisible(true);
+                setErrorVisible(false);
 
-                // Optionally hide the alert after a few seconds
+
                 setTimeout(() => {
-                    setAlertVisible(false); // Hide success alert after 3 seconds
+                    setAlertVisible(false);
                 }, 3000);
             } catch (error) {
                 console.error("Airdrop failed:", error);
-                setErrorVisible(true); // Show the error alert on failure
-                setAlertVisible(false); // Ensure success alert is hidden
+                setErrorVisible(true);
+                setAlertVisible(false);
 
-                // Optionally hide the error alert after a few seconds
+
                 setTimeout(() => {
-                    setErrorVisible(false); // Hide error alert after 3 seconds
+                    setErrorVisible(false);
                 }, 3000);
             }
         }
@@ -70,12 +67,12 @@ const Airdrop = () => {
             </div>
             <div>
                 <h3 className='text-center mt-3 text-4xl font-bold '>Airdrop Sols</h3>
-                <div className='flex justify-center flex-colspace-y-2 mt-4'>
+                <div className='flex justify-center flex-colspace-y-2 mt-4 md:space-x-2'>
                     <input
                         type='text'
                         id="amount"
-                        value={amount} // Controlled input
-                        onChange={(e) => setAmount(e.target.value)} // Update amount state
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                         placeholder='Enter Amount To AirDrop'
                         className="input input-bordered input-accent w-full max-w-xs"
                     />
@@ -86,7 +83,7 @@ const Airdrop = () => {
                         Send Airdrop
                     </button>
 
-                    {alertVisible && ( // Conditional rendering of the success alert
+                    {alertVisible && (
                         <div role="alert" className="alert alert-success mt-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +101,7 @@ const Airdrop = () => {
                         </div>
                     )}
 
-                    {errorVisible && ( // Conditional rendering of the error alert
+                    {errorVisible && (
                         <div role="alert" className="alert alert-error mt-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +120,7 @@ const Airdrop = () => {
                     )}
                 </div>
             </div>
-            
+
         </div>
     );
 };
