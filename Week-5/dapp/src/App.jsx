@@ -15,6 +15,7 @@ import Hero from './Components/Hero';
 import Airdrop from './Components/Airdrop';
 import Footer from './Components/Footer';
 
+
 const App = () => {
 
   const RPC_URL = import.meta.env.VITE_RPC_URL;
@@ -29,6 +30,7 @@ const App = () => {
             <Navbar />
             <Hero />
             <ConnectionButtons />
+            
             <Airdrop />
           </WalletModalProvider>
         </WalletProvider>
