@@ -37,7 +37,8 @@ const Airdrop = () => {
     const sendAirdrop = async () => {
         if (amount && wallet.publicKey) {
             try {
-                await connection.requestAirdrop(wallet.publicKey, amount * LAMPORTS_PER_SOL);
+                const res = await connection.requestAirdrop(wallet.publicKey, amount * LAMPORTS_PER_SOL);
+                console.log(res);
                 setAlertVisible(true);
                 setErrorVisible(false);
 
