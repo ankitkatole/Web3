@@ -35,29 +35,23 @@ const Airdrop = () => {
     }
 
     const sendAirdrop = async () => {
-        if (amount && wallet.publicKey) {
-            try {
-                const res = await connection.requestAirdrop(wallet.publicKey, amount * LAMPORTS_PER_SOL);
-                console.log(res);
-                setAlertVisible(true);
-                setErrorVisible(false);
+    if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+        alert("Enter a valid amount");
+        return;
+    }
 
-
-                setTimeout(() => {
-                    setAlertVisible(false);
-                }, 3000);
-            } catch (error) {
-                console.error("Airdrop failed:", error);
-                setErrorVisible(true);
-                setAlertVisible(false);
-
-
-                setTimeout(() => {
-                    setErrorVisible(false);
-                }, 3000);
-            }
-        }
-    };
+    try {
+        const lamports = parseFloat(amount) * LAMPORTS_PER_SOL;
+        const res = await connection.requestAirdrop(wallet.publicKey, lamports);
+        console.log("Airdrop signature:", res);
+        setAlertVisible(true);
+        setErrorVisible(false);
+    } catch (error) {
+        console.error("Airdrop failed:", error);
+        setErrorVisible(true);
+        setAlertVisible(false);
+    }
+};
     getBalance();
     return (
         <div className='flex flex-col justify-around mt-5 space-y-2 md:space-y-0 md:flex-row '>
