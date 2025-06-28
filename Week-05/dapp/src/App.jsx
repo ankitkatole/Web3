@@ -21,7 +21,6 @@ const App = () => {
   const RPC_URL = import.meta.env.VITE_RPC_URL;
   const network = WalletAdapterNetwork.Devnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-  console.log("RPC URL:", RPC_URL);
   return (
     <>
       <ConnectionProvider endpoint={RPC_URL}>

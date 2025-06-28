@@ -34,24 +34,36 @@ const Airdrop = () => {
         console.log("Wallet Not Connected");
     }
 
-    const sendAirdrop = async () => {
-    if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
-        alert("Enter a valid amount");
-        return;
-    }
+    // const sendAirdrop = async () => {
+    //     if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+    //         alert("Enter a valid amount");
+    //         return;
+    //     }
 
-    try {
-        const lamports = parseFloat(amount) * LAMPORTS_PER_SOL;
-        const res = await connection.requestAirdrop(wallet.publicKey, lamports);
-        console.log("Airdrop signature:", res);
-        setAlertVisible(true);
-        setErrorVisible(false);
-    } catch (error) {
-        console.error("Airdrop failed:", error);
-        setErrorVisible(true);
-        setAlertVisible(false);
-    }
-};
+    //     try {
+    //         const lamports = parseFloat(amount) * LAMPORTS_PER_SOL;
+    //         const res = await connection.requestAirdrop(wallet.publicKey, lamports);
+    //         console.log("Airdrop signature:", res);
+    //         setAlertVisible(true);
+    //         setErrorVisible(false);
+    //         getBalance();
+    //     } catch (error) {
+    //         console.error("Airdrop failed:", error);
+    //         setErrorVisible(true);
+    //         setAlertVisible(false);
+    //     }
+    // };
+    const sendAirdrop = async () => {
+        try {
+            const sig = await connection.requestAirdrop(wallet.publicKey, 1 * LAMPORTS_PER_SOL);
+            console.log("Airdrop Signature:", sig);
+            await connection.confirmTransaction(sig, "confirmed");
+            alert("Airdrop successful!");
+        } catch (e) {
+            console.error("Airdrop error", e);
+        }
+    };
+
     getBalance();
     return (
         <div className='flex flex-col justify-around mt-5 space-y-2 md:space-y-0 md:flex-row '>
