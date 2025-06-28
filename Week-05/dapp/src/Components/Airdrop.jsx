@@ -61,7 +61,7 @@ const Airdrop = () => {
                     <div id="balance" className="text-2xl text-white stat-value">Connect to Wallet</div>
                 </div>
             </div>
-            <SignMessage />
+            {/* <SignMessage /> */}
             <div>
                 <h3 className='mt-3 text-4xl font-bold text-center '>Airdrop Sols</h3>
                 <div className='flex justify-center mt-4 flex-colspace-y-2 md:space-x-2'>
