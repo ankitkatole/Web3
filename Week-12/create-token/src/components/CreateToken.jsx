@@ -170,8 +170,7 @@ export function CreateToken({onTokenCreate}) {
                 });
                 console.log("Token created successfully:", mintKeyPair.publicKey.toBase58());
             }
-
-            if (error.message.includes("User rejected")) {
+            else if (error.message.includes("User rejected")) {
                 setAlert({ message: "Transaction was cancelled by the user.", type: "warning" });
             } else {
                 setAlert({
@@ -224,7 +223,7 @@ export function CreateToken({onTokenCreate}) {
                                     id="tokenName"
                                     type="text"
                                     ref={nameRef}
-                                    placeholder="e.g., My Awesome Coin"
+                                    placeholder="e.g., Personal Coin"
                                     className="flex-1 p-3 text-gray-800 transition-colors duration-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                                 />
                             </div>
@@ -237,7 +236,7 @@ export function CreateToken({onTokenCreate}) {
                                     id="symbolName"
                                     type="text"
                                     ref={symbolRef}
-                                    placeholder="e.g., MAC"
+                                    placeholder="e.g., PC"
                                     className="flex-1 p-3 text-gray-800 transition-colors duration-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                                 />
                             </div>
