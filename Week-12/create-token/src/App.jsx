@@ -29,16 +29,18 @@ function App() {
             <div className='relative flex flex-col min-h-screen bg-gray-100'>
               <div className='flex flex-col items-center justify-between gap-10 p-4 md:flex-row'>
                 <h1 className='text-4xl font-bold '>Solana Token Generator</h1>
+                {token && <div className='flex justify-center p-4'>
+                <h2 className='text-2xl '>Token Mint Address: {token.toBase58()}</h2>
+              </div>}
                 <div className='flex flex-row items-center space-x-4'>
                   <WalletMultiButton />
                   <WalletDisconnectButton />
                 </div>
               </div>
-              {token && <div className='flex justify-center p-4'>
-                <h2 className='text-2xl font-bold'>Token Mint Address: {token.toBase58()}</h2>
-              </div>}
+              
 
               <div className="flex flex-col items-center justify-center flex-grow p-4 md:flex-row">
+                
                 <CreateToken onTokenCreate={(tokenMint) => {
                   setToken(tokenMint);
                 }} />
