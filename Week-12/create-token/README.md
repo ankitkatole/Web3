@@ -34,15 +34,15 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository:**
 
-git clone 
+`git clone`
 
 
 2. **Install dependencies:**
 
-npm install
+`npm install`
 
 OR
-yarn install
+`yarn install`
 
 
 ### Configuration
@@ -51,22 +51,22 @@ This project uses an environment variable for the Solana Devnet RPC URL.
 
 1. **Create a `.env` file** in the root of your project:
 
-.env
+`.env`
 
 
 2. **Add your Devnet RPC URL** to this file. It's crucial to use a reliable RPC endpoint, especially given potential network congestion. Public RPCs can be slow or unreliable. Consider using a dedicated provider like Helius, QuickNode, or Alchemy.
 
-VITE_DEVNET_URL="YOUR_SOLANA_DEVNET_RPC_URL_HERE"
+`VITE_DEVNET_URL="YOUR_SOLANA_DEVNET_RPC_URL_HERE"`
 
 
 **Example** with a placeholder for a dedicated RPC **(replace `YOUR_API_KEY`):**
 
-VITE_DEVNET_URL="https://rpc.helius.xyz/?api-key=YOUR_HELIUS_API_KEY"
+`VITE_DEVNET_URL="https://rpc.helius.xyz/?api-key=YOUR_HELIUS_API_KEY"`
 
 
 **Example with a public RPC (less reliable, for testing only):**
 
-VITE_DEVNET_URL="https://api.devnet.solana.com"
+`VITE_DEVNET_URL="https://api.devnet.solana.com"`
 
 
 **Important:** Replace `"YOUR_SOLANA_DEVNET_RPC_URL_HERE"` with your actual RPC endpoint.
@@ -75,10 +75,10 @@ VITE_DEVNET_URL="https://api.devnet.solana.com"
 
 1. **Start the development server:**
 
-npm run dev
+`npm run dev`
 
 OR
-yarn dev
+`yarn dev`
 
 
 2. Open your browser and navigate to the URL displayed in your terminal (usually `http://localhost:5173`).
